@@ -4,6 +4,4 @@
   <%= form.submit "Shout!" %>
 <% end %>
 
-<% @shouts.each do |s| %>
-  <div><%= s.body %></div>
-<% end %>
+<%= render @shouts %>
