@@ -7,13 +7,46 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/config/database.yml
+.gitignore
+*.un~
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
+/log/*.log
+/tmp
 
-/node_modules
-/yarn-error.log
+.gitignore
+# Ignore Mac backup files
+.DS_Store
 
-.byebug_history
+# Ignore ctags file
+tags
+
+# Ignore simplecov file
+/coverage
+
+# Ignore vcr cassettes
+#/spec/vcr
+
+# Ignore application configuration
+/config/application.yml
+
+# Ignore legacy_oms data
+db/legacy_oms
+
+# Ignore mixpanel data
+db/mixpanel
+
+# Ignore db import file if it exists
+db.dump
+
+quickfix.out  #quickfix buffer for failed rspec tests
+
+# Ignore Ruby Mine folder
+.idea
+
+# stores rspec history so you can run only previously failing tests with --only-failures
+example_failures.txt
+node_modules
