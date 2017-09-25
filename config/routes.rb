@@ -13,7 +13,12 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
 
-  resources :shouts, only: [:create, :show]
+  resources :shouts, only: [:create, :show] do
+    member do
+      post "like" => "likes#create"
+      delete "unlike" => "likes#destroy"
+    end
+  end
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
