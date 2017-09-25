@@ -16,6 +16,10 @@ class User < ApplicationRecord
   def unlike(shout)
     liked_shout.destroy(shout)
   end
+
+  def to_param
+    username
+  end
       
    
 end
