@@ -4,6 +4,18 @@ Rails.application.routes.draw do
   end
 
   root to: "homes#show"
+
+  post "text_shouts" => "shouts#create", defaults: { content_type: TextShout}
+  post "photo_shouts" => "shouts#create", defaults: { content_type: PhotoShout}
+
+  resources :shouts, only: [:show] do
+    member do
+      post "like" => "likes#create"
+      delete "unlike" => "likes#destroy"
+    end
+  end
+
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -16,13 +28,6 @@ Rails.application.routes.draw do
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
-  end
-
-  resources :shouts, only: [:create, :show] do
-    member do
-      post "like" => "likes#create"
-      delete "unlike" => "likes#destroy"
-    end
   end
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
