@@ -1,0 +1,4 @@
+<%= form_for :search, url: search_path, method: :get do |form| %>
+  <%= form.text_field :term, placeholder: "Search here" %>
+  <%= form.submit "Search" %>
+<% end %>
