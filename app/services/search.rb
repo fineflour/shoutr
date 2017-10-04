@@ -4,9 +4,15 @@ class Search
     @term = term
   end
 
-  def run
-    ShoutSearchQuery.new(term: "##{term}").to_relation
+  def results
+#    binding.pry
+    ShoutSearchQuery.new(term: "#{term}").to_relation
   end
 
-  alias results run
+  def to_partial_path
+    "search/search"
+  end
+
+
+  #alias results run
 end
