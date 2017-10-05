@@ -4,9 +4,10 @@ class Search
     @term = term
   end
 
-  def results
+  def run
 #    binding.pry
-    ShoutSearchQuery.new(term: "#{term}").to_relation
+    #ShoutSearchQuery.new(term: "#{term}").to_relation
+    Sunspot.search([TextShout, PhotoShout]) { fulltext term }.results
   end
 
   def to_partial_path
@@ -14,5 +15,5 @@ class Search
   end
 
 
-  #alias results run
+  alias results run
 end
